@@ -11,4 +11,10 @@ class CellTest {
         Cell cell = new Cell("ALIVE");
         assertEquals("ALIVE", cell.getState());
     }
+
+    @Test
+    public void should_have_state_DEAD_when_dead() {
+        Cell cell = new Cell("DEAD");
+        assertEquals("DEAD", cell.getState());
+    }
 }
