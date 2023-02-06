@@ -53,4 +53,14 @@ class CellTest {
         assertEquals("DEAD", cell.getState());
     }
 
+    @Test
+    //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+    public void should_be_ALIVE_by_reproduction_when_DEAD_cell_has_three_ALIVE_neighbours() {
+        Cell cell = new Cell("DEAD");
+        int numberOfAliveNeighbours = 3;
+        cell.setNextState(numberOfAliveNeighbours);
+        assertEquals("ALIVE", cell.getState());
+
+    }
+
 }

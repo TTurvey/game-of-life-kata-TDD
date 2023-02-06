@@ -19,6 +19,9 @@ public class Cell {
         if (numberOfAliveNeighbours > 3) {
             state = "DEAD";
         }
+        if (numberOfAliveNeighbours == 3 && state == "DEAD") {
+            state = "ALIVE";
+        }
     }
 }
 
