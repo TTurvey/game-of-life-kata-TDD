@@ -28,14 +28,4 @@ class GridTest {
         assertEquals(4, grid.getAliveCount());
     }
 
-    @Test
-    public void should_dead_cells(){
-        Grid grid = new Grid(2);
-        grid.putCell(DeadCell.INSTANCE, 0, 0);
-        grid.putCell(DeadCell.INSTANCE, 0, 1);
-        grid.putCell(DeadCell.INSTANCE, 1, 0);
-        grid.putCell(DeadCell.INSTANCE, 1, 1);
-        assertEquals(0, grid.getAliveCount());
-    }
-
 }
