@@ -11,5 +11,11 @@ public class Cell {
     public String getState() {
         return state;
     }
+
+    public void setNextState(int numberOfAliveNeighbours){
+        if (numberOfAliveNeighbours < 2) {
+            state = "DEAD";
+        }
+    }
 }
 
