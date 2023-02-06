@@ -16,4 +16,10 @@ public class DeadCell implements Cell {
         }
         return this;
     }
+
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DeadCell cell = (DeadCell) obj;
+        return isAlive() == cell.isAlive();
+    }
 }
