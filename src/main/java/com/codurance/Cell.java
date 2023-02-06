@@ -1,27 +1,9 @@
 package com.codurance;
 
-public class Cell {
+public interface Cell {
 
-    private String state;
+    boolean isAlive();
 
-    public Cell(String state) {
-        this.state = state;
-    }
+    Cell nextState(int liveNeighbours);
 
-    public String getState() {
-        return state;
-    }
-
-    public void setNextState(int numberOfAliveNeighbours){
-        if (numberOfAliveNeighbours < 2) {
-            state = "DEAD";
-        }
-        if (numberOfAliveNeighbours > 3) {
-            state = "DEAD";
-        }
-        if (numberOfAliveNeighbours == 3 && state == "DEAD") {
-            state = "ALIVE";
-        }
-    }
 }
-
