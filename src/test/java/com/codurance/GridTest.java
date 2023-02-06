@@ -13,6 +13,12 @@ class GridTest {
     }
 
     @Test
+    public void initialize_with_dead_cells() {
+        Grid grid = new Grid(10);
+        assertEquals(0, grid.getAliveCount());
+    }
+
+    @Test
     public void should_count_live_cells(){
         Grid grid = new Grid(2);
         grid.putCell(LiveCell.INSTANCE, 0, 0);
