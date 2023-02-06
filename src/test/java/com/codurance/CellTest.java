@@ -44,4 +44,13 @@ class CellTest {
         assertEquals("ALIVE", cell.getState());
     }
 
+    @Test
+    //Any live cell with more than three live neighbours dies, as if by overpopulation.
+    public void should_be_DEAD_by_overpopulation_when_ALIVE_cell_has_more_than_three_ALIVE_neighbours() {
+        Cell cell = new Cell("ALIVE");
+        int numberOfAliveNeighbours = 4;
+        cell.setNextState(numberOfAliveNeighbours);
+        assertEquals("DEAD", cell.getState());
+    }
+
 }
