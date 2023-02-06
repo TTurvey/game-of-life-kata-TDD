@@ -60,7 +60,22 @@ class CellTest {
         int numberOfAliveNeighbours = 3;
         cell.setNextState(numberOfAliveNeighbours);
         assertEquals("ALIVE", cell.getState());
+    }
 
+    @Test
+    public void should_stay_DEAD_when_DEAD_cell_has_two_ALIVE_neighbours() {
+        Cell cell = new Cell("DEAD");
+        int numberOfAliveNeighbours = 2;
+        cell.setNextState(numberOfAliveNeighbours);
+        assertEquals("DEAD", cell.getState());
+    }
+
+    @Test
+    public void should_stay_DEAD_when_DEAD_cell_has_four_ALIVE_neighbours() {
+        Cell cell = new Cell("DEAD");
+        int numberOfAliveNeighbours = 4;
+        cell.setNextState(numberOfAliveNeighbours);
+        assertEquals("DEAD", cell.getState());
     }
 
 }
