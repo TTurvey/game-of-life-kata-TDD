@@ -11,4 +11,8 @@ public class Grid {
     public String[][] getState() {
         return state;
     }
+
+    public int getAliveCount() {
+        return 1;
+    }
 }
