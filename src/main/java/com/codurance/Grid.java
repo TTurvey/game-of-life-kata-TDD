@@ -1,5 +1,7 @@
 package com.codurance;
 
+import java.util.Collections;
+
 public class Grid {
 
     private String[][] state;
@@ -13,6 +15,16 @@ public class Grid {
     }
 
     public int getAliveCount() {
-        return 1;
+        int aliveCount = 0;
+
+        for (String[] gridRow : getState()){
+            for (String str : gridRow) {
+                if (str.equals("ALIVE")){
+                    aliveCount ++;
+                }
+            }
+        }
+
+        return aliveCount;
     }
 }
