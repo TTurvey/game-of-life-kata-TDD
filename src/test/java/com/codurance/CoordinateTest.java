@@ -25,5 +25,29 @@ class CoordinateTest {
         assertEquals(expected, coordinates);
     }
 
+    @Test
+    public void should_get_neighbouring_coordinates_when_last_coordinate_in_first_row() {
+        List<Coordinate> coordinates = new Coordinate(0, 9).getNeighboursList(new Grid(10));
+        List<Coordinate> expected = Arrays.asList(
+                new Coordinate(0, 8),
+                new Coordinate(1, 8),
+                new Coordinate(1, 9)
+        );
+
+        assertEquals(expected, coordinates);
+    }
+
+    @Test
+    public void should_get_neighbouring_coordinates_when_last_coordinate_in_grid() {
+        List<Coordinate> coordinates = new Coordinate(9, 9).getNeighboursList(new Grid(10));
+        List<Coordinate> expected = Arrays.asList(
+                new Coordinate(8, 8),
+                new Coordinate(8, 9),
+                new Coordinate(9, 8)
+        );
+
+        assertEquals(expected, coordinates);
+    }
+
 
 }
