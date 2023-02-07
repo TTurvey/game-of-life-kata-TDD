@@ -6,9 +6,12 @@ import java.util.List;
 public class Grid {
 
     private Cell[][] cells;
+    private int dimension;
 
-    public Grid(int i) {
-        cells = new Cell[i][i];
+    public Grid(int dimension) {
+        this.dimension = dimension;
+        cells = new Cell[dimension][dimension];
+
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells[x].length; y++) {
                 cells[x][y] = DeadCell.INSTANCE;
@@ -75,25 +78,25 @@ public class Grid {
 
     @Override
     public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        String horizontalBorder = " " + "---".repeat(7);
-        stringBuffer.append(horizontalBorder);
-        stringBuffer.append("\n");
+        StringBuffer strBuffer = new StringBuffer();
+
+        String horizontalBorder = " " + "---".repeat(dimension);
+        strBuffer.append(horizontalBorder);
+        strBuffer.append("\n");
+
         for (int x = 0; x < cells.length; x++) {
-            stringBuffer.append("|");
+            strBuffer.append("|");
             for (int y = 0; y < cells[x].length; y++) {
                 if (cells[x][y].isAlive()) {
-                    stringBuffer.append(" X ");
+                    strBuffer.append(" X ");
                 } else {
-                    stringBuffer.append(" . ");
+                    strBuffer.append(" . ");
                 }
             }
-            stringBuffer.append("|");
-            stringBuffer.append("\n");
+            strBuffer.append("|\n");
         }
-        stringBuffer.append(horizontalBorder);
-        stringBuffer.append("\n");
-        return stringBuffer.toString();
+        strBuffer.append(horizontalBorder).append("\n");
+        return strBuffer.toString();
     }
 
 }

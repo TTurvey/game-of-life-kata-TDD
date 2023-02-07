@@ -1,8 +1,5 @@
 package com.codurance;
 
-import java.util.TimerTask;
-import java.util.Timer;
-
 public class Main {
     public static void main(String[] args) {
         Grid grid = new Grid(7);

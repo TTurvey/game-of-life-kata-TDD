@@ -1,77 +1,56 @@
 package com.codurance;
 
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameOfLife {
 
-    private Grid inputGrid;
-    private final int iterations;
+    private final Grid inputGrid;
+    private final int totalIterations;
     Timer timer;
 
-    public GameOfLife(Grid inputGrid, int iterations) {
+    public GameOfLife(Grid inputGrid, int totalIterations) {
         this.inputGrid = inputGrid;
-        this.iterations = iterations;
+        this.totalIterations = totalIterations;
         timer = new Timer();
-        timer.schedule(new RunTask(), 2000, 2000);
+        timer.schedule(new RunTask(), 2000, 1000);
     }
 
     class RunTask extends TimerTask {
-        private int count = 0;
+        private int currentIterationCount = 0;
         private Grid currentGen = inputGrid;
 
         public RunTask() {
-            System.out.println(formatter(count));
+            System.out.println(formatter(currentIterationCount));
             System.out.println(inputGrid);
         }
 
         public void run() {
-            count++;
-            if (count <= iterations) {
-                System.out.println(formatter(count));
+            currentIterationCount++;
+            if (currentIterationCount <= totalIterations) {
+                System.out.println(formatter(currentIterationCount));
                 currentGen = currentGen.nextGen();
                 System.out.println(currentGen);
             } else {
-                System.out.println("SIMULATION COMPLETE: " + iterations + " GENERATIONS CREATED");
-                //timer.cancel(); Not necessary because we call System.exit
-                // Stops the AWT thread (and everything else)
+                System.out.println(formatter(currentIterationCount));
                 System.exit(0);
             }
         }
 
-        public StringBuffer formatter(int i){
-            StringBuffer stringBuffer = new StringBuffer();
-            if (i==0){
-                stringBuffer.append("--------------");
-                stringBuffer.append("INITIAL GEN [V" + i + "]");
-                stringBuffer.append("--------------");
+        public String formatter(int i){
+            StringBuffer strBuffer = new StringBuffer();
+            if (i == 0){
+                strBuffer.append("-------------[ INITIAL GEN V").append(i);
+            } else if (i <= totalIterations) {
+                strBuffer.append("---------------[ NEXT GEN V").append(i);
             }
             else {
-                stringBuffer.append("----------------");
-                stringBuffer.append("NEXT GEN [V" + i + "]");
-                stringBuffer.append("----------------");
+                strBuffer.append("-------------[ SIMULATION COMPLETE: ")
+                        .append(totalIterations)
+                        .append(" GENERATIONS CREATED");
             }
-            return stringBuffer;
+            strBuffer.append(" ]---------------");
+            return strBuffer.toString();
         }
-
     }
 }
-
-
-//
-//        timer.schedule(new TimerTask() {
-//        Grid nextGenGrid = inputGrid.nextGen();
-//        nextGenGrid = nextGenGrid.nextGen();
-//        counter++;
-//
-//        if (counter >= iterations) {
-//            timer.cancel();
-//        }
-//        System.out.println(stringBuffer);
-//    }
-    
-    
-    
-    
-
