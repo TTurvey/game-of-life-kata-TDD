@@ -76,17 +76,23 @@ public class Grid {
     @Override
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
-
+        String horizontalBorder = " " + "---".repeat(7);
+        stringBuffer.append(horizontalBorder);
+        stringBuffer.append("\n");
         for (int x = 0; x < cells.length; x++) {
+            stringBuffer.append("|");
             for (int y = 0; y < cells[x].length; y++) {
                 if (cells[x][y].isAlive()) {
-                    stringBuffer.append(" + ");
+                    stringBuffer.append(" X ");
                 } else {
-                    stringBuffer.append(" - ");
+                    stringBuffer.append(" . ");
                 }
             }
+            stringBuffer.append("|");
             stringBuffer.append("\n");
         }
+        stringBuffer.append(horizontalBorder);
+        stringBuffer.append("\n");
         return stringBuffer.toString();
     }
 
