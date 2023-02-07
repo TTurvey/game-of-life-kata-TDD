@@ -1,5 +1,8 @@
 package com.codurance;
 
+import java.util.TimerTask;
+import java.util.Timer;
+
 public class Main {
     public static void main(String[] args) {
         Grid grid = new Grid(7);
@@ -14,7 +17,6 @@ public class Main {
         grid.putCell(LiveCell.INSTANCE, 1, 5);
         grid.putCell(LiveCell.INSTANCE, 1, 6);
 
-
 //        Blinker pattern 3
         grid.putCell(LiveCell.INSTANCE, 4, 5);
         grid.putCell(LiveCell.INSTANCE, 5, 5);
@@ -25,6 +27,7 @@ public class Main {
         grid.putCell(LiveCell.INSTANCE, 5, 1);
         grid.putCell(LiveCell.INSTANCE, 5, 2);
 
-        GameOfLife.play(grid, 10);
+        new GameOfLife(grid,4);
     }
+
 }
