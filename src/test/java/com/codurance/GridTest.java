@@ -28,4 +28,13 @@ class GridTest {
         assertEquals(4, grid.getAliveCount());
     }
 
+    @Test
+    public void should_get_next_generation_with_dead_cells() {
+        Grid grid = new Grid(3);
+        Grid grid2 = grid.nextGen();
+        Grid expectedGrid = new Grid(3);
+
+        assertEquals(expectedGrid, grid2);
+    }
+
 }

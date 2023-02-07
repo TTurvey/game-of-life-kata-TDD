@@ -49,5 +49,4 @@ public class Coordinate {
         return true;
     }
 
-
 }
