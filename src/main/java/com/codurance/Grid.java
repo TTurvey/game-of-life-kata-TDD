@@ -73,4 +73,21 @@ public class Grid {
         return Arrays.deepHashCode(cells);
     }
 
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (int x = 0; x < cells.length; x++) {
+            for (int y = 0; y < cells[x].length; y++) {
+                if (cells[x][y].isAlive()) {
+                    stringBuffer.append(" + ");
+                } else {
+                    stringBuffer.append(" - ");
+                }
+            }
+            stringBuffer.append("\n");
+        }
+        return stringBuffer.toString();
+    }
+
 }
