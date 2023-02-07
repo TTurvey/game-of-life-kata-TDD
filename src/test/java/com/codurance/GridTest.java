@@ -65,4 +65,28 @@ class GridTest {
         assertEquals(expectedGrid, nextGenGrid);
     }
 
+    @Test
+    public void should_get_next_gen_with_special_case_blinker()  {
+        Grid gridGen1 = new Grid(7);
+        gridGen1.putCell(LiveCell.INSTANCE, 3, 2);
+        gridGen1.putCell(LiveCell.INSTANCE, 3, 3);
+        gridGen1.putCell(LiveCell.INSTANCE, 3, 4);
+
+        Grid gridGen2 = gridGen1.nextGen();
+
+        Grid expectedGridGen2 = new Grid(7);
+        expectedGridGen2.putCell(LiveCell.INSTANCE, 2, 3);
+        expectedGridGen2.putCell(LiveCell.INSTANCE, 3, 3);
+        expectedGridGen2.putCell(LiveCell.INSTANCE, 4, 3);
+
+        Grid gridGen3 = gridGen2.nextGen();
+
+        System.out.println(gridGen1);
+        System.out.println(gridGen2);
+        System.out.println(gridGen3);
+
+        assertEquals(expectedGridGen2, gridGen2);
+        assertEquals(gridGen1, gridGen3);
+    }
+
 }
