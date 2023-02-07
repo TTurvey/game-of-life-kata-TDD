@@ -5,17 +5,15 @@ import java.util.List;
 
 public class Grid {
 
-    private Cell[][] cells;
-    private int dimension;
+    private final Cell[][] cells;
+    private final int dimension;
 
     public Grid(int dimension) {
         this.dimension = dimension;
         cells = new Cell[dimension][dimension];
 
-        for (int x = 0; x < cells.length; x++) {
-            for (int y = 0; y < cells[x].length; y++) {
-                cells[x][y] = DeadCell.INSTANCE;
-            }
+        for (Cell[] row : cells) {
+            Arrays.fill(row, DeadCell.INSTANCE);
         }
     }
 
@@ -25,10 +23,10 @@ public class Grid {
 
     public int getAliveCount(){
         int aliveCount = 0;
-        for (int x = 0; x < cells.length; x++) {
-            for (int y = 0; y < cells[x].length; y++) {
-                if (cells[x][y].isAlive()) {
-                    aliveCount ++;
+        for (Cell[] row : cells) {
+            for (Cell cell : row) {
+                if (cell.isAlive()) {
+                    aliveCount++;
                 }
             }
         }
@@ -56,7 +54,7 @@ public class Grid {
 
     public int getAliveCountFor(List<Coordinate> coordinates){
         int aliveCount = 0;
-        for ( Coordinate coordinate : coordinates) {
+        for (Coordinate coordinate : coordinates) {
             if(cells[coordinate.getX()][coordinate.getY()].isAlive()){
                 aliveCount ++;
             }
@@ -84,10 +82,10 @@ public class Grid {
         strBuffer.append(horizontalBorder);
         strBuffer.append("\n");
 
-        for (int x = 0; x < cells.length; x++) {
+        for (Cell[] row : cells) {
             strBuffer.append("|");
-            for (int y = 0; y < cells[x].length; y++) {
-                if (cells[x][y].isAlive()) {
+            for (Cell cell : row) {
+                if (cell.isAlive()) {
                     strBuffer.append(" X ");
                 } else {
                     strBuffer.append(" . ");
